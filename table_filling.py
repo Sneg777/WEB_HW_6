@@ -49,7 +49,7 @@ if __name__ == '__main__':
             # 1. Insert groups
             groups = insert_data(
                 conn,
-                3,  # 3 groups
+                3,
                 sql_insert_group_data,
                 lambda i: (fake.word().capitalize(),)
             )
@@ -57,7 +57,7 @@ if __name__ == '__main__':
             # 2. Insert teachers
             teachers = insert_data(
                 conn,
-                randint(3, 5),  # 3-5 teachers
+                randint(3, 5),
                 sql_insert_teachers_data,
                 lambda i: (fake.name(),)
             )
@@ -65,7 +65,7 @@ if __name__ == '__main__':
             # 3. Insert subjects
             subjects = insert_data(
                 conn,
-                randint(5, 8),  # 5-8 subjects
+                randint(5, 8),
                 sql_insert_subjects_data,
                 lambda i: (fake.word().capitalize(), choice(teachers))
             )
@@ -73,7 +73,7 @@ if __name__ == '__main__':
             # 4. Insert students
             students = insert_data(
                 conn,
-                randint(30, 50),  # 30-50 students
+                randint(30, 50),
                 sql_insert_students_data,
                 lambda i: (fake.name(), choice(groups))
             )
@@ -81,15 +81,15 @@ if __name__ == '__main__':
             # 5. Insert grades
             for student in students:
                 for subject in subjects:
-                    num_grades = randint(5, 20)  # Up to 20 grades per student per subject
+                    num_grades = randint(5, 20)
                     insert_data(
                         conn,
                         num_grades,
                         sql_insert_grades_data,
                         lambda i: (
-                            student,  # Student ID
-                            subject,  # Subject ID
-                            randint(60, 100)  # Random grade (e.g., 60-100)
+                            student,
+                            subject,
+                            randint(60, 100)
                         )
                     )
 
